@@ -12,7 +12,4 @@ public class CourseService {
     public List<Course> getCourses() {
         return dao.listAllCourses();
     }
-    public boolean updateCourse(Course course) {
-        return dao.updateCourse(course);
-    }
 }

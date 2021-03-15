@@ -43,7 +43,7 @@
 </div>
 <%
     UserService s = new UserService();
-    List<User> userLists = s.getUsers();
+    List<User> userLists = s.getStudents();
 %>
 <div class="mt-2">
     <table class="table">
@@ -60,8 +60,7 @@
         </tr>
         </thead>
         <tbody>
-        <% for (User user : userLists) {
-            if (user.getRole().equalsIgnoreCase("student")) {%>
+        <% for (User user : userLists) {%>
         <tr>
             <th scope="col"><%= user.getUserID() %></th>
             <td scope="col"><%= user.getFirstName() %></td>
@@ -72,7 +71,7 @@
             <td scope="col"><%= user.getDateOfBirth() %></td>
             <td scope="col"><%= user.getGender() %></td>
         </tr>
-        <% }}%>
+        <% }%>
         </tbody>
     </table>
 </div>

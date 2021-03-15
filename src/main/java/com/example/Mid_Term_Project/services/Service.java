@@ -9,10 +9,9 @@ import java.util.List;
 public interface Service {
     User login(String username, String password, String role);
     boolean addUser(User user);
-    boolean updateUser(User user);
-    List<User> listAllUsers();
+    List<User> listAllStudents();
+    List<User> listAllTeachers();
     boolean addCourse(Course course);
-    boolean updateCourse(Course course);
     List<Course> listAllCourses();
     boolean createResource(Resource resource);
     List<Resource> listAllResources();
