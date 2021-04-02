@@ -21,5 +21,8 @@
         </li>
     </ul>
 </div>
+<div class="container text-center">
+    <h2 class="justify-content-center" style="color:green;">Update was completed successfully</h2>
+</div>
 </body>
 </html>

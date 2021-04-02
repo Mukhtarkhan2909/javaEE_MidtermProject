@@ -36,14 +36,10 @@ public class AddResourceServlet extends HttpServlet {
         ResourceService s = new ResourceService();
         boolean state = s.addResource(r);
         if (state) {
-            out.println("<div class=\"alert alert-success\" role=\"alert\">\r\n" +
-                    " Resource successfully added\r\n" +
-                    "</div>");
+            out.println("<h1> Resource successfully added</h1>");
             request.getRequestDispatcher("list_all_programs.jsp").include(request, response);;
         } else {
-            out.println("<div class=\"alert alert-danger\" role=\"alert\">\r\n" +
-                    " Resource already exists\r\n" +
-                    "</div>");
+            out.println("<h1> Resource exist</h1>");
             request.getRequestDispatcher("add_program.jsp").include(request, response);;
         }
     }

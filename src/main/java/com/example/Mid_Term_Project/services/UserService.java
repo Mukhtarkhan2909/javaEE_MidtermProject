@@ -12,10 +12,16 @@ public class UserService {
     public boolean addUser(User user) {
         return dao.addUser(user);
     }
+    public boolean updateUser(User user) {
+        return dao.updateUser(user);
+    }
     public List<User> getStudents() {
         return dao.listAllStudents();
     }
     public List<User> getTeachers() {
         return dao.listAllTeachers();
+    }
+    public List<User> getUsers() {
+        return dao.listAllUsers();
     }
 }

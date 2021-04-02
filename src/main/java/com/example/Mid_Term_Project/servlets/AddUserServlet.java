@@ -39,10 +39,10 @@ public class AddUserServlet extends HttpServlet {
         boolean state = s.addUser(u);
         if (state) {
             out.println("<h1>User Added Successfully</h1>");
-            request.getRequestDispatcher("list_all_programs.jsp").include(request, response);;
+            request.getRequestDispatcher("list_all_programs.jsp").include(request, response);
         } else {
             out.println("<h1>User already exists</h1>");
-            request.getRequestDispatcher("add_program.jsp").include(request, response);;
+            request.getRequestDispatcher("add_program.jsp").include(request, response);
         }
     }
 

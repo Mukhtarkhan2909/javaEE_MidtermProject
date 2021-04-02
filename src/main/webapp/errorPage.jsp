@@ -21,5 +21,8 @@
         </li>
     </ul>
 </div>
+<div class="container text-center">
+    <h2 style="color:red;">Update was not completed</h2>
+</div>
 </body>
 </html>

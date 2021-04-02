@@ -97,6 +97,49 @@ public class ServiceDao implements Service {
         }
         return state;
     }
+    @Override
+    public boolean updateUser(User user) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        boolean state = false;
+        int result = 0;
+        try {
+            Class.forName(DBConnection.DRIVERCLASS);
+            con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
+            pstmt = con.prepareStatement("update users set user_first_name = ?, user_last_name = ?, " +
+                    "user_email = ?, user_password = ?, user_date_of_birth = ?, " +
+                    "user_dender = ? where user_id = ?");
+            pstmt.setString(1, user.getFirstName());
+            pstmt.setString(2, user.getLastName());
+            pstmt.setString(3, user.getEmail());
+            pstmt.setString(4, user.getPassword());
+            pstmt.setDate(5, (Date) user.getDateOfBirth());
+            pstmt.setString(6, user.getGender());
+            pstmt.setInt(7, user.getUserID());
+            result = pstmt.executeUpdate();
+            if (result >= 0) {
+                state = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return state;
+    }
 
     @Override
     public List<User> listAllStudents() {
@@ -171,6 +214,42 @@ public class ServiceDao implements Service {
     }
 
     @Override
+    public List<User> listAllUsers() {
+        Connection con = null;
+        PreparedStatement cal = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        boolean state = false;
+        List<User> list = new ArrayList<>();
+        try {
+            Class.forName(DBConnection.DRIVERCLASS);
+            con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
+            cal = con.prepareStatement("SELECT * FROM users;");
+            state = cal.execute();
+            if (state) {
+                rs = cal.getResultSet();
+                while (rs.next()) {
+                    User u = new User();
+                    u.setUserID(rs.getInt(1));
+                    u.setFirstName(rs.getString(2));
+                    u.setLastName(rs.getString(3));
+                    u.setRole(rs.getString(4));
+                    u.setEmail(rs.getString(5));
+                    u.setPassword(rs.getString(6));
+                    u.setDateOfBirth(rs.getDate(7));
+                    u.setGender(rs.getString(8));
+                    list.add(u);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            connectionClose(con, pstmt);
+        }
+        return list;
+    }
+
+    @Override
     public boolean addCourse(Course course) {
         Connection con = null;
         PreparedStatement pstmt = null;
@@ -193,6 +272,47 @@ public class ServiceDao implements Service {
             e.printStackTrace();
         } finally {
             connectionClose(con, pstmt);
+        }
+        return state;
+    }
+
+    @Override
+    public boolean updateCourse(Course course) {
+        Connection con = null;
+        PreparedStatement pstmt = null;
+        boolean state = false;
+        int result = 0;
+        try {
+            Class.forName(DBConnection.DRIVERCLASS);
+            con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
+            pstmt = con.prepareStatement("update courses set description = ?, price = ?, " +
+                    "duration_in_weeks = ?, degree_certificate_offered = ? where course_name = ?");
+            pstmt.setString(1, course.getDescription());
+            pstmt.setInt(2, course.getPrice());
+            pstmt.setInt(3, course.getDurationInWeeks());
+            pstmt.setString(4, course.getDegreeCertificateOffered());
+            pstmt.setString(5, course.getCourseName());
+            result = pstmt.executeUpdate();
+            if (result >= 0) {
+                state = true;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (pstmt != null) {
+                try {
+                    pstmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         return state;
     }

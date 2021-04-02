@@ -1,40 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="com.example.Mid_Term_Project.entities.*"%>
-<%@ page session="false"%>
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Add Program</title>
-</head>
-<body class="container">
+<%@ page import="com.example.Mid_Term_Project.entities.*"%>
+<%@ include file="header.jsp" %>
 <%
-    HttpSession session = request.getSession(false);
-    if(session == null){
+    User u = (User) session.getAttribute("admin");
+    if(u == null){
         response.sendRedirect("./loginPage");
-    } else {
-        User u = (User) session.getAttribute("admin");
-        if(u == null){
-            response.sendRedirect("./loginPage");
-        }
     }
 %>
-<div>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="./">Online educational course</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="./logout">Logout</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</div>
 <div class="container form-group mt-2">
     <a href="#" onclick="history.go(-1)"><button class="btn btn-danger">Back</button></a>
 </div>

@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@page import="com.example.Mid_Term_Project.entities.*"%>
-<%@ page session="false"%>
+<%@ page import="com.example.Mid_Term_Project.entities.*"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,14 +9,9 @@
 </head>
 <body class="container">
 <%
-    HttpSession session = request.getSession(false);
-    if(session == null){
+    User u = (User) session.getAttribute("admin");
+    if(u == null){
         response.sendRedirect("loginPage");
-    } else {
-        User u = (User) session.getAttribute("admin");
-        if(u == null){
-            response.sendRedirect("loginPage");
-        }
     }
 %>
 <div>
