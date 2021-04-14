@@ -19,7 +19,7 @@ public class ServiceDao implements Service {
         try {
             Class.forName(DBConnection.DRIVERCLASS);
             con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
-            pstmt = con.prepareStatement("select * from users where user_email = ? and user_password = ? and user_role = ?");
+            pstmt = con.prepareStatement("select * from users where email = ? and password = ? and role = ?");
             pstmt.setString(1, username);
             pstmt.setString(2, password);
             pstmt.setString(3, role);
@@ -106,9 +106,9 @@ public class ServiceDao implements Service {
         try {
             Class.forName(DBConnection.DRIVERCLASS);
             con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
-            pstmt = con.prepareStatement("update users set user_first_name = ?, user_last_name = ?, " +
-                    "user_email = ?, user_password = ?, user_date_of_birth = ?, " +
-                    "user_dender = ? where user_id = ?");
+            pstmt = con.prepareStatement("update users set first_name = ?, last_name = ?, " +
+                    "email = ?, password = ?, date_of_birth = ?, " +
+                    "gender = ? where user_id = ?");
             pstmt.setString(1, user.getFirstName());
             pstmt.setString(2, user.getLastName());
             pstmt.setString(3, user.getEmail());
@@ -152,7 +152,7 @@ public class ServiceDao implements Service {
         try {
             Class.forName(DBConnection.DRIVERCLASS);
             con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
-            cal = con.prepareStatement("SELECT * FROM users WHERE user_role = 'student';");
+            cal = con.prepareStatement("SELECT * FROM users WHERE role = 'student';");
             state = cal.execute();
             if (state) {
                 rs = cal.getResultSet();
@@ -188,7 +188,7 @@ public class ServiceDao implements Service {
         try {
             Class.forName(DBConnection.DRIVERCLASS);
             con = DriverManager.getConnection(DBConnection.DBURL, DBConnection.USER, DBConnection.PASSWORD);
-            cal = con.prepareStatement("SELECT * FROM users WHERE user_role = 'teacher';");
+            cal = con.prepareStatement("SELECT * FROM users WHERE role = 'teacher';");
             state = cal.execute();
             if (state) {
                 rs = cal.getResultSet();
