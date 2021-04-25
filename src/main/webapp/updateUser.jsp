@@ -37,28 +37,28 @@
         <% for (User user : list) { %>
         <form action="updateUserResult.jsp" method="post">
             <tr>
-                <td scope="col"><input readonly name="id" value="<%= user.getUserID() %>"></input></td>
-                <th scope="col"><input type="text" name="fName" value="<%= user.getFirstName() %>"></input></th>
-                <td scope="col"><input type="text" name="lName" value="<%= user.getLastName() %>"></input></td>
+                <td scope="col"><input readonly name="userID" value="<%= user.getUserID() %>"></input></td>
+                <th scope="col"><input type="text" name="firstName" value="<%= user.getFirstName() %>"></input></th>
+                <td scope="col"><input type="text" name="lastName" value="<%= user.getLastName() %>"></input></td>
                 <td scope="col">
                     <select class="form-control" name="role">
-                        <%
-                            if (user.getRole().equals("student")) {
-                        %>
-                        <option value="<%=user.getRole()%>" selected>Student</option>
-                        <option value="teacher">Teacher</option>
-                        <option value="admin">Admin</option>
-                        <%
-                            } else if (user.getRole().equals("teacher")) {
-                        %>
-                        <option value="student">Student</option>
-                        <option value="<%=user.getRole()%>" selected>Teacher</option>
-                        <option value="admin">Admin</option>
-                        <% } else { %>
-                        <option value="student">Student</option>
-                        <option value="teacher">Teacher</option>
-                        <option value="<%=user.getRole()%>" selected>Admin</option>
-                        <% } %>
+                    <%
+                        if (user.getRole().equals("student")) {
+                    %>
+                    <option value="<%=user.getRole()%>" selected>Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="admin">Admin</option>
+                    <%
+                    } else if (user.getRole().equals("teacher")) {
+                    %>
+                    <option value="student">Student</option>
+                    <option value="<%=user.getRole()%>" selected>Teacher</option>
+                    <option value="admin">Admin</option>
+                    <% } else { %>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="<%=user.getRole()%>" selected>Admin</option>
+                    <% } %>
                     </select>
                 </td>
                 <td scope="col"><input type="text" name="email" value="<%= user.getEmail() %>"></input></td>

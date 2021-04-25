@@ -817,7 +817,7 @@ false Zulu
     <database id="9" parent="1" name="OnlineCourse">
       <ObjectId>16702</ObjectId>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>980</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1140</IntrospectionStateNumber>
       <Current>1</Current>
     </database>
     <database id="10" parent="1" name="OnlineShopping">
@@ -901,7 +901,7 @@ UC/10
 </Acl>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>981</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1141</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="27" parent="9" name="plpgsql">
@@ -1008,6 +1008,7 @@ UC/10
     </table>
     <table id="40" parent="26" name="flyway_schema_history">
       <ObjectId>17296</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>971</StateNumber>
     </table>
@@ -1018,6 +1019,7 @@ UC/10
     </table>
     <table id="42" parent="26" name="users">
       <ObjectId>17314</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>973</StateNumber>
     </table>

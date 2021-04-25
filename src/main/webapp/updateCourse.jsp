@@ -35,11 +35,11 @@
         <% for (Course course : list) { %>
         <form action="updateCourseResult.jsp" method="post">
             <tr>
-                <td scope="col"><input readonly name="name" value="<%= course.getCourseName() %>"></input></td>
+                <td scope="col"><input readonly name="courseName" value="<%= course.getCourseName() %>"></input></td>
                 <th scope="col"><input type="text" name="description" value="<%= course.getDescription() %>"></input></th>
                 <td scope="col"><input type="number" name="price" value="<%= course.getPrice() %>"></input></td>
-                <td scope="col"><input type="number" name="durInWeek" value="<%= course.getDurationInWeeks() %>"></input></td>
-                <td scope="col"><input type="text" name="degCert" value="<%= course.getDegreeCertificateOffered() %>"></input></td>
+                <td scope="col"><input type="number" name="durationInWeeks" value="<%= course.getDurationInWeeks() %>"></input></td>
+                <td scope="col"><input type="text" name="degreeCertificateOffered" value="<%= course.getDegreeCertificateOffered() %>"></input></td>
                 <td scope="col"><button type="submit" class="btn btn-success">Update</button></td>
             </tr>
         </form>
