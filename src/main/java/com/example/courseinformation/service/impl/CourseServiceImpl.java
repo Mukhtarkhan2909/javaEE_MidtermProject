@@ -1,50 +1,36 @@
 package com.example.courseinformation.service.impl;
 
 import com.example.courseinformation.module.Courses;
-import com.example.courseinformation.module.StudentCourses;
-import com.example.courseinformation.module.TeacherCourses;
+import com.example.courseinformation.module.UserCourse;
+import com.example.courseinformation.repository.CourseRepository;
+import com.example.courseinformation.repository.UserCourseRepository;
 import com.example.courseinformation.service.CourseService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CourseServiceImpl implements CourseService {
 
+    @Autowired
+    private CourseRepository courseRepository;
+    @Autowired
+    private UserCourseRepository userCourseRepository;
+
     @Override
-    public StudentCourses getStudentCourses(Long studentId) {
-        Courses course1 = new Courses();
-        course1.setId(1L);
-        course1.setName("Course1");
-        Courses course2 = new Courses();
-        course2.setId(1L);
-        course2.setName("Course2");
-        List<Courses> coursesList = new ArrayList<>();
-        coursesList.add(course1);
-        coursesList.add(course2);
-        return new StudentCourses(studentId, coursesList);
+    public List<UserCourse> getUserCourses(Long userId) {
+        return userCourseRepository.findByUserId(userId);
     }
 
     @Override
-    public TeacherCourses getTeacherCourses(Long teacherId) {
-        Courses course1 = new Courses();
-        course1.setId(1L);
-        course1.setName("Course1");
-        Courses course2 = new Courses();
-        course2.setId(1L);
-        course2.setName("Course2");
-        List<Courses> coursesList = new ArrayList<>();
-        coursesList.add(course1);
-        coursesList.add(course2);
-        return new TeacherCourses(teacherId, coursesList);
+    public Optional<Courses> getCourseInformation(Long courseId) {
+        return courseRepository.findById(courseId);
     }
 
     @Override
-    public Courses getCourseInformation(Long courseId) {
-        Courses course = new Courses();
-        course.setId(courseId);
-        course.setName("JavaEE");
-        return course;
+    public List<Courses> getAllCourses() {
+        return courseRepository.findAll();
     }
 }

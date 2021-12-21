@@ -14,18 +14,18 @@ public class CourseController {
     @Autowired
     CourseService courseService;
 
-    @GetMapping("/get-course/{courseId}")
+    @GetMapping("/get-courses")
+    public ResponseEntity<?> getAllCourses() {
+        return ResponseEntity.ok(courseService.getAllCourses());
+    }
+
+    @GetMapping("/find-course/{courseId}")
     public ResponseEntity<?> getCourseInformation(@PathVariable Long courseId) {
         return ResponseEntity.ok(courseService.getCourseInformation(courseId));
     }
 
-    @GetMapping("/student-courses/{studentId}")
-    public ResponseEntity<?> getStudentCourses(@PathVariable Long studentId) {
-        return ResponseEntity.ok(courseService.getStudentCourses(studentId));
-    }
-
-    @GetMapping("/teacher-courses/{teacherId}")
-    public ResponseEntity<?> getTeacherCourses(@PathVariable Long teacherId) {
-        return ResponseEntity.ok(courseService.getTeacherCourses(teacherId));
+    @GetMapping("/user-courses/{userId}")
+    public ResponseEntity<?> getUserCourses(@PathVariable Long userId) {
+        return ResponseEntity.ok(courseService.getUserCourses(userId));
     }
 }
